@@ -30,6 +30,7 @@
         "preact-render-to-string": "^5.1.4",
         "preact-router": "^4.0.1",
         "react": "^18.1.0",
+        "react-p5-wrapper": "^3.3.0",
         "workbox-routing": "^6.5.3",
         "workbox-strategies": "^6.5.3"
     },
