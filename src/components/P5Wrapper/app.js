@@ -10,6 +10,7 @@ const sketch = (p5) => {
 
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight - 40)
+    p5.frameRate(50000);
 
     visualScale = 1
     groundLevel = p5.floor(p5.height * 0.6)
