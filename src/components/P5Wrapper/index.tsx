@@ -1,4 +1,4 @@
-import sketch from './app'
+import sketch from './sketch'
 import { ReactP5Wrapper } from 'react-p5-wrapper'
 
 const P5Wrapper = (): JSX.Element => {
