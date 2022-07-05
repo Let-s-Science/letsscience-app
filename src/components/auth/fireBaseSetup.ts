@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 
 import { FirebaseApp, initializeApp } from 'firebase/app'
+import { connectAuthEmulator, getAuth } from 'firebase/auth'
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -10,7 +11,7 @@ import { FirebaseApp, initializeApp } from 'firebase/app'
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyDeIc6CtnjkRx53nvguZUkEpF4oHquNM0g",
+  apiKey: 'AIzaSyDeIc6CtnjkRx53nvguZUkEpF4oHquNM0g',
 
   authDomain: 'let-s-science.firebaseapp.com',
 
@@ -18,14 +19,21 @@ const firebaseConfig = {
 
   storageBucket: 'let-s-science.appspot.com',
 
-  messagingSenderId: "644249210334",
+  messagingSenderId: '644249210334',
 
-  appId: "1:644249210334:web:2cb9735a51bac5af56e14f"
+  appId: '1:644249210334:web:2cb9735a51bac5af56e14f'
 
 }
 
 const initializeFirebase = (): FirebaseApp => {
-  return initializeApp(firebaseConfig)
+  const app = initializeApp(firebaseConfig)
+  const auth = getAuth(app)
+  if (process.env.NODE_ENV === 'development') {
+    connectAuthEmulator(auth, 'http://localhost:9099')
+  }
+  return app
 }
 
-export { firebaseConfig, initializeFirebase }
+const firebaseApp = initializeFirebase()
+
+export { firebaseConfig, initializeFirebase, firebaseApp }

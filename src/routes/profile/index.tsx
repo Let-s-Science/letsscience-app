@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react'
-
-interface ProfileProps {
-  user: string
-}
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router'
 
 // Note: `user` comes from the URL, courtesy of our router
-const Profile = ({ user }: ProfileProps): JSX.Element => {
+const Profile: React.FC = () => {
   const [time, setTime] = useState(Date.now())
   const [count, setCount] = useState(10)
+  const { user = 'me' } = useParams()
 
   useEffect(() => {
     const timer = setInterval(() => setTime(Date.now()), 1000)

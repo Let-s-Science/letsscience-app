@@ -38,4 +38,8 @@ router.post('/api/quiz', (req, resp) => {
     .catch(() => resp.status(500).send())
 })
 
+router.delete('/api/quiz', (req, resp) => {
+    store.collection('quizzes')
+})
+
 export { router as quizRouter }

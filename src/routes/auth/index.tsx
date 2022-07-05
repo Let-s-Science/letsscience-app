@@ -1,42 +1,42 @@
 // Import FirebaseAuth and firebase.
 import React, { useEffect, useState } from 'react'
-import StyledFirebaseAuth from '../../components/auth'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
 import * as firebaseui from 'firebaseui'
 import { firebaseConfig } from '../../components/auth/fireBaseSetup'
+import { Navigate } from 'react-router'
+import { initializeApp } from 'firebase/app'
+import { EmailAuthProvider, getAuth, GoogleAuthProvider, UserCredential } from 'firebase/auth'
+import SignIn from '../../components/auth/SignIn'
 
-firebase.initializeApp(firebaseConfig)
+initializeApp(firebaseConfig)
 
 // Configure FirebaseUI.
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: 'popup',
+  signInSuccessUrl: '/profile',
   // We will display Google and Facebook as auth providers.
   signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    GoogleAuthProvider.PROVIDER_ID,
+    EmailAuthProvider.PROVIDER_ID,
     firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
   callbacks: {
     // Avoid redirects after sign-in.
-    signInSuccessWithAuthResult: () => false
+    // Potentially unstable use of UserCredentials instead of AuthResult
+    signInSuccessWithAuthResult: (authResult: UserCredential, redirectUrl: string) => {
+      return false
+    }
   }
 }
 
 const SignInScreen: React.FC = () => {
   const [isSignedIn, setIsSignedIn] = useState(false) // Local signed-in state.
 
-  const auth = firebase.auth()
+  const auth = getAuth()
 
   // Listen to the Firebase Auth state and set the local state.
   useEffect(() => {
-
-    if (process.env.NODE_ENV === 'development') {
-      auth.useEmulator('http://localhost:9099')
-    }
-
-    const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+    const unregisterAuthObserver = getAuth().onAuthStateChanged(user => {
       setIsSignedIn(!(user == null))
     })
     return () => unregisterAuthObserver() // Make sure we un-register Firebase observers when the component unmounts.
@@ -45,17 +45,12 @@ const SignInScreen: React.FC = () => {
   if (!isSignedIn) {
     return (
       <div>
-        <h1>My App</h1>
-        <p>Please sign-in:</p>
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+        <SignIn />
       </div>
     )
   }
   return (
-    <div>
-      <p>Welcome {firebase.auth().currentUser?.displayName}! You are now signed-in!</p>
-      <a onClick={async () => await firebase.auth().signOut()}>Sign-out</a>
-    </div>
+    <Navigate to='/profile' />
   )
 }
 
