@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 
-import { FirebaseApp, initializeApp } from 'firebase/app'
+import { FirebaseApp, getApps, initializeApp } from 'firebase/app'
 import { connectAuthEmulator, getAuth } from 'firebase/auth'
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -25,13 +25,13 @@ const firebaseConfig = {
 
 }
 
-const initializeFirebase = (): FirebaseApp => {
+const initializeFirebase = (): void => {
+  if (getApps().length > 0) { return }
   const app = initializeApp(firebaseConfig)
   const auth = getAuth(app)
   if (process.env.NODE_ENV === 'development') {
     connectAuthEmulator(auth, 'http://localhost:9099')
   }
-  return app
 }
 
 const firebaseApp = initializeFirebase()

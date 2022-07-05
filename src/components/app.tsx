@@ -3,7 +3,6 @@ import { Navigate, Outlet, Route, Routes } from 'react-router'
 import Navigation from './navigation'
 
 // Code-splitting is automated for `routes` directory
-import Home from '../routes/home'
 import Profile from '../routes/profile'
 import Quiz from '../routes/quiz'
 import SignInScreen from '../routes/auth'
@@ -11,19 +10,13 @@ import { BrowserRouter } from 'react-router-dom'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth'
-import { firebaseConfig } from './auth/fireBaseSetup'
-
-const auth = getAuth()
-let user: User | null
-onAuthStateChanged(auth, (newUserObject) => {
-  user = newUserObject
-})
+import { firebaseConfig, initializeFirebase } from './auth/fireBaseSetup'
+import { getApps } from 'firebase/app'
+import Home from '../routes/home'
 
 const RequireAuth = () => {
-  if (firebase.apps.length === 0) {
-    const app = firebase.initializeApp(firebaseConfig)
-    console.log(firebase.auth(app).currentUser)
-    console.log(firebase.apps)
+  if (getApps().length === 0) {
+    initializeFirebase()
   }
   if (getAuth().currentUser == null) {
     // Redirect them to the /login page, but save the current location they were
@@ -41,6 +34,7 @@ const App = () => (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<RequireAuth />}>
+          <Route path='home' element={<Home />} />
           <Route path='profile/:user' element={<Profile />} />
           <Route path='profile' element={<Profile />} />
           <Route path='quiz' element={<Quiz id={1} />} />

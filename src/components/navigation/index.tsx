@@ -5,6 +5,7 @@ import Home from '@mui/icons-material/Home'
 import VerifiedUser from '@mui/icons-material/VerifiedUser'
 import QuestionMark from '@mui/icons-material/QuestionMark'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Navigation = (): JSX.Element => {
   const [value, setValue] = useState('')
@@ -18,9 +19,9 @@ const Navigation = (): JSX.Element => {
           setValue(newValue)
         }}
       >
-        <BottomNavigationAction href='/' label='Home' icon={<Home />} />
-        <BottomNavigationAction href='/profile' label='Profile' icon={<VerifiedUser />} />
-        <BottomNavigationAction href='/quiz' label='Quiz' icon={<QuestionMark />} />
+        <BottomNavigationAction to='/home' label='Home' icon={<Home />} component={Link} />
+        <BottomNavigationAction to='/profile' label='Profile' icon={<VerifiedUser />} component={Link} />
+        <BottomNavigationAction to='/quiz' label='Quiz' icon={<QuestionMark />} component={Link} />
       </BottomNavigation>
     </Paper>
   )
