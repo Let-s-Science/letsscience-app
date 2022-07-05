@@ -7,14 +7,14 @@ import Profile from '../routes/profile'
 import Quiz from '../routes/quiz'
 import SignInScreen from '../routes/auth'
 import { BrowserRouter } from 'react-router-dom'
-import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth'
-import { firebaseConfig, initializeFirebase } from './auth/fireBaseSetup'
+import { getAuth } from 'firebase/auth'
+import { initializeFirebase } from './auth/fireBaseSetup'
 import { getApps } from 'firebase/app'
 import Home from '../routes/home'
+import React from 'react'
 
-const RequireAuth = () => {
+const RequireAuth: React.FC = () => {
   if (getApps().length === 0) {
     initializeFirebase()
   }
@@ -29,7 +29,7 @@ const RequireAuth = () => {
   return <><Outlet /><Navigation /></>
 }
 
-const App = () => (
+const App: React.FC = () => (
   <div id='app'>
     <BrowserRouter>
       <Routes>

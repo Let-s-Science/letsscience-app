@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
@@ -13,15 +12,14 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { initializeFirebase } from './fireBaseSetup'
-import { getApps } from 'firebase/app'
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
+import { AuthError, createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 import { useNavigate } from 'react-router'
 
 const theme = createTheme()
 initializeFirebase()
 
-const SignIn = () => {
-  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+const SignIn: React.FC = () => {
+  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>): any => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     const email = data.get('email')?.toString() as string
@@ -31,6 +29,9 @@ const SignIn = () => {
       .then((userCredential) => {
         // Signed in
         useNavigate()('/profile/me')
+      })
+      .catch((error: AuthError) => {
+        console.log(error.message)
       })
   }
 

@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 
-import { FirebaseApp, getApps, initializeApp } from 'firebase/app'
+import { getApps, initializeApp } from 'firebase/app'
 import { connectAuthEmulator, getAuth } from 'firebase/auth'
 
 // TODO: Add SDKs for Firebase products that you want to use
