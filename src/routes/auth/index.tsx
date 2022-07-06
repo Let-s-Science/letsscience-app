@@ -1,8 +1,13 @@
+import React, {
+  useEffect,
+  useState
+} from 'react'
+
 // Import FirebaseAuth and firebase.
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router'
+
 import { firebaseConfig } from '../../components/auth/fireBaseSetup'
 import SignIn from '../../components/auth/SignIn'
 

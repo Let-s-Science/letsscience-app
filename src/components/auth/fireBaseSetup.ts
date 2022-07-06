@@ -1,7 +1,13 @@
 // Import the functions you need from the SDKs you need
 
-import { getApps, initializeApp } from 'firebase/app'
-import { connectAuthEmulator, getAuth } from 'firebase/auth'
+import {
+  getApps,
+  initializeApp
+} from 'firebase/app'
+import {
+  connectAuthEmulator,
+  getAuth
+} from 'firebase/auth'
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -36,4 +42,4 @@ const initializeFirebase = (): void => {
 
 const firebaseApp = initializeFirebase()
 
-export { firebaseConfig, initializeFirebase, firebaseApp }
+export { firebaseApp, firebaseConfig, initializeFirebase }

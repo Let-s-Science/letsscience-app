@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, {
+  useEffect,
+  useState
+} from 'react'
+
 import { useParams } from 'react-router'
 
 // Note: `user` comes from the URL, courtesy of our router

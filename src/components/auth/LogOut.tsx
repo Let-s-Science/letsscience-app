@@ -1,6 +1,7 @@
+import { useState } from 'react'
+
 import { getAuth } from 'firebase/auth'
 import { useEffect } from 'preact/hooks'
-import { useState } from 'react'
 import { Navigate } from 'react-router'
 
 const LogOut: React.FC = () => {

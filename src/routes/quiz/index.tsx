@@ -1,5 +1,9 @@
+import {
+  useEffect,
+  useState
+} from 'react'
+
 import ky from 'ky-universal'
-import { useEffect, useState } from 'react'
 
 interface QuizProps {
   id: number

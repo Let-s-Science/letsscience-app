@@ -1,9 +1,17 @@
+import 'firebase/compat/auth'
+
+import React from 'react'
+
 import { getApps } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import 'firebase/compat/auth'
-import React from 'react'
-import { Navigate, Outlet, Route, Routes } from 'react-router'
+import {
+  Navigate,
+  Outlet,
+  Route,
+  Routes
+} from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
+
 import SignInScreen from '../routes/auth'
 import Home from '../routes/home'
 // Code-splitting is automated for `routes` directory

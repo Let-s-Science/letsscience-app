@@ -1,11 +1,13 @@
-import Paper from '@mui/material/Paper'
+import { useState } from 'react'
+
+import { Link } from 'react-router-dom'
+
+import Home from '@mui/icons-material/Home'
+import QuestionMark from '@mui/icons-material/QuestionMark'
+import VerifiedUser from '@mui/icons-material/VerifiedUser'
 import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
-import Home from '@mui/icons-material/Home'
-import VerifiedUser from '@mui/icons-material/VerifiedUser'
-import QuestionMark from '@mui/icons-material/QuestionMark'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import Paper from '@mui/material/Paper'
 
 const Navigation = (): JSX.Element => {
   const [value, setValue] = useState('')

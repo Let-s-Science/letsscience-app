@@ -8,15 +8,16 @@
         "serve": "sirv build --port 8080 --cors --single",
         "dev": "preact watch",
         "lint": "ts-standard",
-        "lint-fix": "ts-standard --fix",
+        "lint-fix": "format-imports ./src && ts-standard --fix",
         "test": "jest",
-        "commit": "npm run lint && npm run test"
+        "commit": "npm run lint-fix && npm run test"
     },
     "devDependencies": {
         "@types/react": "^18.0.9",
         "@vercel/node": "^1.15.3",
         "enzyme": "^3.10.0",
         "enzyme-adapter-preact-pure": "^4.0.1",
+        "format-imports": "^3.0.12",
         "jest": "^27.0.0",
         "jest-preset-preact": "file:jest-preset-preact",
         "preact-cli": "^3.0.0",
