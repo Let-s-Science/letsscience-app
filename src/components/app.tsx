@@ -8,7 +8,8 @@ import {
   Navigate,
   Outlet,
   Route,
-  Routes
+  Routes,
+  useLocation
 } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -22,15 +23,13 @@ import LogOut from './auth/LogOut'
 import Navigation from './navigation'
 
 const RequireAuth: React.FC = () => {
+  const location = useLocation()
   if (getApps().length === 0) {
     initializeFirebase()
   }
   if (getAuth().currentUser == null) {
-    // Redirect them to the /login page, but save the current location they were
-    // trying to go to when they were redirected. This allows us to send them
-    // along to that page after they login, which is a nicer user experience
-    // than dropping them off on the home page.
-    return <Navigate to='/signin' />
+    console.log(location)
+    return <Navigate to='/signin' replace state={{ from: location.pathname }} />
   }
 
   return <><Outlet /><Navigation /></>

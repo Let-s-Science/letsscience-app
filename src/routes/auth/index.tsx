@@ -6,15 +6,23 @@ import React, {
 // Import FirebaseAuth and firebase.
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import { Navigate } from 'react-router'
+import {
+  Navigate,
+  useLocation
+} from 'react-router'
 
 import { firebaseConfig } from '../../components/auth/fireBaseSetup'
 import SignIn from '../../components/auth/SignIn'
 
 initializeApp(firebaseConfig)
 
+interface RedirectState {
+  from: string
+}
+
 const SignInScreen: React.FC = () => {
   const [isSignedIn, setIsSignedIn] = useState(false) // Local signed-in state.
+  const { from = '/profile/me' }: RedirectState = ((useLocation().state as RedirectState | null) != null) || { from: '/profile/me' }
 
   // Listen to the Firebase Auth state and set the local state.
   useEffect(() => {
@@ -32,7 +40,7 @@ const SignInScreen: React.FC = () => {
     )
   }
   return (
-    <Navigate to='/profile' />
+    <Navigate to={from} />
   )
 }
 

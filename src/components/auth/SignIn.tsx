@@ -5,7 +5,6 @@ import {
   createUserWithEmailAndPassword,
   getAuth
 } from 'firebase/auth'
-import { useNavigate } from 'react-router'
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Avatar from '@mui/material/Avatar'
@@ -41,7 +40,6 @@ const SignIn: React.FC = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        useNavigate()('/profile/me')
       })
       .catch((error: AuthError) => {
         // TODO: Better error handling
