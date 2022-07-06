@@ -13,6 +13,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import Container from '@mui/material/Container'
+import Divider from '@mui/material/Divider'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Grid from '@mui/material/Grid'
 import Link from '@mui/material/Link'
@@ -24,6 +25,7 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 
 import { initializeFirebase } from './fireBaseSetup'
+import SocialLogins from './SocialLogins'
 
 const theme = createTheme()
 initializeFirebase()
@@ -109,6 +111,10 @@ const SignIn: React.FC = () => {
                 </Link>
               </Grid>
             </Grid>
+
+            <Divider sx={{ mb: 3, mt: 3 }} />
+
+            <SocialLogins />
           </Box>
         </Box>
       </Container>
