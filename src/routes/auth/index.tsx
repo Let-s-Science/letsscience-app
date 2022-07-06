@@ -1,9 +1,9 @@
 // Import FirebaseAuth and firebase.
-import React, { useEffect, useState } from 'react'
-import { firebaseConfig } from '../../components/auth/fireBaseSetup'
-import { Navigate } from 'react-router'
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import React, { useEffect, useState } from 'react'
+import { Navigate } from 'react-router'
+import { firebaseConfig } from '../../components/auth/fireBaseSetup'
 import SignIn from '../../components/auth/SignIn'
 
 initializeApp(firebaseConfig)

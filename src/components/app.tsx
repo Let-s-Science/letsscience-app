@@ -1,18 +1,17 @@
+import { getApps } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
+import 'firebase/compat/auth'
+import React from 'react'
 import { Navigate, Outlet, Route, Routes } from 'react-router'
-
-import Navigation from './navigation'
-
+import { BrowserRouter } from 'react-router-dom'
+import SignInScreen from '../routes/auth'
+import Home from '../routes/home'
 // Code-splitting is automated for `routes` directory
 import Profile from '../routes/profile'
 import Quiz from '../routes/quiz'
-import SignInScreen from '../routes/auth'
-import { BrowserRouter } from 'react-router-dom'
-import 'firebase/compat/auth'
-import { getAuth } from 'firebase/auth'
 import { initializeFirebase } from './auth/fireBaseSetup'
-import { getApps } from 'firebase/app'
-import Home from '../routes/home'
-import React from 'react'
+import LogOut from './auth/LogOut'
+import Navigation from './navigation'
 
 const RequireAuth: React.FC = () => {
   if (getApps().length === 0) {
@@ -28,6 +27,7 @@ const RequireAuth: React.FC = () => {
 
   return <><Outlet /><Navigation /></>
 }
+// getAuth().signOut()
 
 const App: React.FC = () => (
   <div id='app'>
@@ -38,6 +38,7 @@ const App: React.FC = () => (
           <Route path='profile/:user' element={<Profile />} />
           <Route path='profile' element={<Profile />} />
           <Route path='quiz' element={<Quiz id={1} />} />
+          <Route path='logout' element={<LogOut />} />
         </Route>
         <Route path='/signin' element={<SignInScreen />} />
       </Routes>
