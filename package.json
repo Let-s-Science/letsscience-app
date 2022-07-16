@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "lint": "ts-standard",
     "lint-fix": "format-imports ./src && ts-standard --fix",
-    "types:generate": "gulp --color --gulpfile gulpfile.js build_types"
+    "types:generate": "mv types types.BAK && mkdir types && cp types.BAK/types.ts types/ && gulp --color --gulpfile gulpfile.js build_types && cp -rf types/schemas types.BAK/schemas && rm -rf types && mv types.BAK types ",
+    "types:build": "npm run types:generate && cd types && npm run build && cd ..",
+    "functions:build": "npm run types:build && cd functions && npm run build && cd .."
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",

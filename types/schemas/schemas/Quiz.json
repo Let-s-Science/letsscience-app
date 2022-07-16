@@ -1,0 +1,21 @@
+{
+  "$id": "Quiz",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "$ref": "QuizQuestion"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "questions"
+  ],
+  "additionalProperties": false
+}
