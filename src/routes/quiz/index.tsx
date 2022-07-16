@@ -4,17 +4,19 @@ import {
 } from 'react'
 
 import {
-  APIQuestion,
-  APIQuiz,
-  getQuiz
-} from '../../client'
+  API,
+  Quiz,
+  QuizQuestion
+} from '@let-s-science/api-types/types'
+
+import { getQuiz } from '../../client'
 
 interface QuizProps {
   id: number
 }
 
-const Quiz = ({ id }: QuizProps): JSX.Element => {
-  const [quiz, setQuiz] = useState<APIQuiz|null>(null)
+const QuizPage = ({ id }: QuizProps): JSX.Element => {
+  const [quiz, setQuiz] = useState<API<Quiz>|null>(null)
 
   useEffect(() => {
     getQuiz(4).then((resp) => setQuiz(resp)).catch((err) => console.log(err))
@@ -35,7 +37,7 @@ const Quiz = ({ id }: QuizProps): JSX.Element => {
 }
 
 interface QuestionProps {
-  questionData: APIQuestion
+  questionData: QuizQuestion
 }
 
 const Question = ({ questionData }: QuestionProps): JSX.Element => {
@@ -61,4 +63,4 @@ const Question = ({ questionData }: QuestionProps): JSX.Element => {
   )
 }
 
-export default Quiz
+export default QuizPage

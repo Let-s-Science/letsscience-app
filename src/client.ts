@@ -1,6 +1,11 @@
 import axios, { AxiosInstance } from 'axios'
 import { getAuth } from 'firebase/auth'
 
+import {
+  API,
+  Quiz
+} from '@let-s-science/api-types/types'
+
 const getClient = async (): Promise<AxiosInstance> => {
   const token = await getAuth().currentUser?.getIdToken()
   return axios.create({
@@ -11,25 +16,7 @@ const getClient = async (): Promise<AxiosInstance> => {
   })
 }
 
-export interface APIAnswer {
-  id: number
-  answer: number
-}
-
-export interface APIQuestion {
-  question: string
-  answers: APIAnswer[]
-  correctAnswer: number
-}
-
-export interface APIQuiz {
-  _id: string
-  id: number
-  title: string
-  questions: APIQuestion[]
-}
-
-const getQuiz = async (id: number): Promise<APIQuiz> => {
+const getQuiz = async (id: number): Promise<API<Quiz>> => {
   const resp = (await getClient()).get(`api/quiz/${id}`)
   return (await resp).data
 }

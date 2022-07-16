@@ -1,0 +1,19 @@
+{
+  "name": "@let-s-science/api-types",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/validate.js",
+  "files": [
+    "/lib"
+  ],
+  "types": "lib/validate.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}

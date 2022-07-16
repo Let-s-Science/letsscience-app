@@ -1,6 +1,9 @@
 import * as express from 'express'
-import { isLoggedIn } from './auth'
-import { store } from './initFirestore'
+import { isLoggedIn } from './auth.js'
+import { store } from './initFirestore.js'
+import { QuizQuestion } from '@let-s-science/api-types/types'
+import { isQuiz } from '@let-s-science/api-types'
+
 const router = express.Router() // eslint-disable-line max-len
 
 router.get('/api/quiz/:id', isLoggedIn, (req, resp): void => {
@@ -32,19 +35,15 @@ router.get('/api/quiz/:id', isLoggedIn, (req, resp): void => {
     .catch(() => resp.status(500).send())
 })
 
-interface QuizAnswer {
-  id: string
-  answer: string
-}
+router.post('/api/quiz', isLoggedIn, (req, resp): void => {
+  try {
+    isQuiz(req.body)
+  } catch {
+    resp.status(400).send()
+    console.log('Invalid request')
+    return
+  }
 
-interface QuizQuestion {
-  id: string
-  question: string
-  answers: QuizAnswer[]
-  correctAnswer: string
-}
-
-router.post('/api/quiz', (req, resp) => {
   const body = req.body as QuizQuestion
   store.collection('quizzes').add(body)
     .then(() => resp.status(200).send())

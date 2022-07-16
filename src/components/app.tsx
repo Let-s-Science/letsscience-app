@@ -18,7 +18,7 @@ import SignInScreen from '../routes/auth'
 import UpdateProfile from '../routes/createProfile'
 import Home from '../routes/home'
 import Profile from '../routes/profile'
-import Quiz from '../routes/quiz'
+import QuizPage from '../routes/quiz'
 import { initializeFirebase } from './auth/fireBaseSetup'
 import LogOut from './auth/LogOut'
 import Navigation from './navigation'
@@ -53,7 +53,7 @@ const App: React.FC = () => (
           <Route path='home' element={<Home />} />
           <Route path='profile/:user' element={<Profile />} />
           <Route path='profile' element={<Profile />} />
-          <Route path='quiz' element={<Quiz id={1} />} />
+          <Route path='quiz' element={<QuizPage id={1} />} />
           <Route path='logout' element={<LogOut />} />
           <Route path='createProfile' element={<UpdateProfile />} />
         </Route>

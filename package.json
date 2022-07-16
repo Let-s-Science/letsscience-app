@@ -2,14 +2,14 @@
   "name": "app-letsscience",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "tsc": "tsc",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "ts-standard",
-    "lint-fix": "format-imports ./src && ts-standard --fix"
+    "lint-fix": "format-imports ./src && ts-standard --fix",
+    "types:generate": "gulp --color --gulpfile gulpfile.js build_types"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
@@ -21,17 +21,28 @@
     "preact": "^10.9.0",
     "react-jazzicon": "^1.0.4",
     "react-router": "^6.3.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "@let-s-science/api-types": "file:./types/"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.3.0",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/experimental-utils": "^5.30.6",
+    "ajv-formats": "^2.1.1",
     "format-imports": "^3.0.12",
+    "gulp": "^4.0.2",
+    "ts-json-schema-generator": "^1.0.0",
     "ts-standard": "^11.0.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
     "vite-plugin-pwa": "^0.12.3"
+  },
+  "ts-standard": {
+    "ignore": [
+      "functions/src/validate_schema.js",
+      "types",
+      "gulpfile.js"
+    ]
   }
 }

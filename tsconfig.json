@@ -26,10 +26,11 @@
   "exclude": [
     "node_modules",
     "public",
-    "functions/lib"
+    "functions/lib",
+    "types/*"
   ],
   "include": [
-    "src/**/*", "vite.config.ts", "functions/src/*"
+    "src/**/*", "vite.config.ts", "functions/src/*", "types/validate.ts"
   ],
   "references": [
     {
