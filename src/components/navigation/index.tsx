@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Link } from 'react-router-dom'
 
+import GroupIcon from '@mui/icons-material/Group'
 import Home from '@mui/icons-material/Home'
 import QuestionMark from '@mui/icons-material/QuestionMark'
 import VerifiedUser from '@mui/icons-material/VerifiedUser'
@@ -13,7 +14,10 @@ const Navigation = (): JSX.Element => {
   const [value, setValue] = useState('')
 
   return (
-    <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+    <Paper
+      sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
+      elevation={3}
+    >
       <BottomNavigation
         showLabels
         value={value}
@@ -21,9 +25,30 @@ const Navigation = (): JSX.Element => {
           setValue(newValue)
         }}
       >
-        <BottomNavigationAction to='/home' label='Home' icon={<Home />} component={Link} />
-        <BottomNavigationAction to='/profile' label='Profile' icon={<VerifiedUser />} component={Link} />
-        <BottomNavigationAction to='/quiz' label='Quiz' icon={<QuestionMark />} component={Link} />
+        <BottomNavigationAction
+          to='/home'
+          label='Home'
+          icon={<Home />}
+          component={Link}
+        />
+        <BottomNavigationAction
+          to='/profile'
+          label='Profile'
+          icon={<VerifiedUser />}
+          component={Link}
+        />
+        <BottomNavigationAction
+          to='/quiz'
+          label='Quiz'
+          icon={<QuestionMark />}
+          component={Link}
+        />
+        <BottomNavigationAction
+          to='/friends'
+          label='Friends'
+          icon={<GroupIcon />}
+          component={Link}
+        />
       </BottomNavigation>
     </Paper>
   )

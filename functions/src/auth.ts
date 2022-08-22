@@ -1,7 +1,11 @@
 import { Request, RequestHandler, Response } from 'express'
 import { auth } from './initFirestore.js'
 
-export const isLoggedIn: RequestHandler = async (req: Request, res: Response, next: Function) => {
+export const isLoggedIn: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: Function
+) => {
   const token = req.headers.authorization
 
   if (token === undefined) {

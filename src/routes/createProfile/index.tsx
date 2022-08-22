@@ -23,7 +23,9 @@ const UpdateProfile: React.FC = () => {
     return <Navigate to='/signin' />
   }
 
-  const [displayName, setDisplayName] = useState<string>(currentUser.displayName ?? '')
+  const [displayName, setDisplayName] = useState<string>(
+    currentUser.displayName ?? ''
+  )
   const [submitted, setSubmitted] = useState<boolean>(false)
 
   if (submitted) {
@@ -60,7 +62,6 @@ const UpdateProfile: React.FC = () => {
           Update Profile
         </Typography>
         <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-
           <Box
             sx={{
               display: 'flex',
@@ -68,7 +69,10 @@ const UpdateProfile: React.FC = () => {
               alignItems: 'center'
             }}
           >
-            <Jazzicon diameter={100} seed={Math.round(Math.random() * 10000000)} />
+            <Jazzicon
+              diameter={100}
+              seed={Math.round(Math.random() * 10000000)}
+            />
           </Box>
           <TextField
             margin='normal'

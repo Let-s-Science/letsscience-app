@@ -24,8 +24,7 @@ const Profile: React.FC = () => {
       <div>Current time: {new Date(time).toLocaleString()}</div>
 
       <p>
-        <button onClick={() => setCount((count) => count + 1)}>Click Me</button>
-        {' '}
+        <button onClick={() => setCount((count) => count + 1)}>Click Me</button>{' '}
         Clicked {count} times.
       </p>
     </div>

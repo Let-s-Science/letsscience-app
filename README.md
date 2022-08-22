@@ -17,8 +17,9 @@ firebase emulators:start
 ```
 
 In a separate terminal:
+
 ```bash
-# start the preact development server 
+# start the preact development server
 npm run dev
 ```
 
@@ -26,7 +27,7 @@ You can now use the served app from the local preact server.
 
 ## CLI Commands
 
-``` bash
+```bash
 # install dependencies
 npm install
 

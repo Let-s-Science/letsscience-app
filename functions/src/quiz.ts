@@ -45,7 +45,9 @@ router.post('/api/quiz', isLoggedIn, (req, resp): void => {
   }
 
   const body = req.body as QuizQuestion
-  store.collection('quizzes').add(body)
+  store
+    .collection('quizzes')
+    .add(body)
     .then(() => resp.status(200).send())
     .catch(() => resp.status(500).send())
 })

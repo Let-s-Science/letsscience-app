@@ -8,7 +8,8 @@ const LogOut: React.FC = () => {
   // This is probably unnecessary
   const [loggedOut, setLoggedOut] = useState(false)
   useEffect(() => {
-    getAuth().signOut()
+    getAuth()
+      .signOut()
       .then(() => setLoggedOut(true))
       .catch((error) => console.log(error))
   }, [])

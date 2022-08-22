@@ -10,7 +10,5 @@
   },
   "compileOnSave": true,
   "exclude": ["lib"],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

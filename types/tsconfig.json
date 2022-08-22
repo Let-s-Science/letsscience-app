@@ -12,8 +12,5 @@
   },
   "compileOnSave": true,
   "exclude": ["lib"],
-  "include": [
-    "schemas/*", "types.ts", "validate.ts"
-  ]
+  "include": ["schemas/*", "types.ts", "validate.ts"]
 }
-

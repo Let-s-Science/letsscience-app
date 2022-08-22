@@ -18,7 +18,7 @@ const SocialLogins: React.FC = () => {
       .then((userCredential) => {
         // Signed in
       })
-    // TODO: better error handling
+      // TODO: better error handling
       .catch((error) => console.log(error))
   }
 
@@ -28,17 +28,27 @@ const SocialLogins: React.FC = () => {
       .then(() => {
         // Signed in
       })
-    // TODO: better error handling
+      // TODO: better error handling
       .catch((error) => console.log(error))
   }
 
   return (
     <>
       <Stack spacing={3}>
-        <Button variant='contained' startIcon={<GoogleIcon />} color='error' onClick={googleSignIn}>
+        <Button
+          variant='contained'
+          startIcon={<GoogleIcon />}
+          color='error'
+          onClick={googleSignIn}
+        >
           Sign in with Google
         </Button>
-        <Button variant='contained' startIcon={<PersonIcon />} color='warning' onClick={guestSignIn}>
+        <Button
+          variant='contained'
+          startIcon={<PersonIcon />}
+          color='warning'
+          onClick={guestSignIn}
+        >
           Sign in as Guest
         </Button>
       </Stack>

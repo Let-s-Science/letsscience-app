@@ -16,6 +16,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { profileIsSet } from '../helper/auth'
 import SignInScreen from '../routes/auth'
 import UpdateProfile from '../routes/createProfile'
+import Friends from '../routes/friends'
 import Home from '../routes/home'
 import Profile from '../routes/profile'
 import QuizPage from '../routes/quiz'
@@ -31,7 +32,9 @@ const RequireAuth: React.FC = () => {
 
   // Force user to sign in
   if (getAuth().currentUser == null) {
-    return <Navigate to='/signin' replace state={{ from: location.pathname }} />
+    return (
+      <Navigate to='/signin' replace state={{ from: location.pathname }} />
+    )
   }
 
   // Force new users to create a profile
@@ -40,7 +43,12 @@ const RequireAuth: React.FC = () => {
     return <UpdateProfile />
   }
 
-  return <><Outlet /><Navigation /></>
+  return (
+    <>
+      <Outlet />
+      <Navigation />
+    </>
+  )
 }
 // getAuth().signOut()
 
@@ -56,6 +64,7 @@ const App: React.FC = () => (
           <Route path='quiz' element={<QuizPage id={1} />} />
           <Route path='logout' element={<LogOut />} />
           <Route path='createProfile' element={<UpdateProfile />} />
+          <Route path='friends' element={<Friends />} />
         </Route>
         {/* /signin should be the only open route */}
         <Route path='/signin' element={<SignInScreen />} />

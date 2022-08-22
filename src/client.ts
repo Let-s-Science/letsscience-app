@@ -9,7 +9,8 @@ import {
 const getClient = async (): Promise<AxiosInstance> => {
   const token = await getAuth().currentUser?.getIdToken()
   return axios.create({
-    baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '',
+    baseURL:
+      process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '',
     headers: {
       Authorization: token ?? ''
     }

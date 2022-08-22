@@ -2,12 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext",
-      "WebWorker"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
@@ -23,14 +18,12 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment"
   },
-  "exclude": [
-    "node_modules",
-    "public",
-    "functions/lib",
-    "types/*"
-  ],
+  "exclude": ["node_modules", "public", "functions/lib", "types/*"],
   "include": [
-    "src/**/*", "vite.config.ts", "functions/src/*", "types/validate.ts"
+    "src/**/*",
+    "vite.config.ts",
+    "functions/src/*",
+    "types/validate.ts"
   ],
   "references": [
     {

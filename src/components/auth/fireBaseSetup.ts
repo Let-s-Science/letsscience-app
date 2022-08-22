@@ -16,7 +16,6 @@ import {
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-
   apiKey: 'AIzaSyDeIc6CtnjkRx53nvguZUkEpF4oHquNM0g',
 
   authDomain: 'let-s-science.firebaseapp.com',
@@ -28,11 +27,12 @@ const firebaseConfig = {
   messagingSenderId: '644249210334',
 
   appId: '1:644249210334:web:2cb9735a51bac5af56e14f'
-
 }
 
 const initializeFirebase = (): void => {
-  if (getApps().length > 0) { return }
+  if (getApps().length > 0) {
+    return
+  }
   const app = initializeApp(firebaseConfig)
   const auth = getAuth(app)
   if (process.env.NODE_ENV === 'development') {
