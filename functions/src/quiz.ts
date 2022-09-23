@@ -35,6 +35,7 @@ router.get('/api/quiz/:id', isLoggedIn, (req, resp): void => {
     .catch(() => resp.status(500).send())
 })
 
+// TODO: Only allow this for admins
 router.post('/api/quiz', isLoggedIn, (req, resp): void => {
   try {
     isQuiz(req.body)
@@ -51,8 +52,22 @@ router.post('/api/quiz', isLoggedIn, (req, resp): void => {
     .catch(() => resp.status(500).send())
 })
 
-router.delete('/api/quiz', (req, resp) => {
-  store.collection('quizzes')
+// TODO: Only allow this for admins
+router.delete('/api/quiz/:id', isLoggedIn, async (req, resp) => {
+  const quiz = await store.collection('quizzes')
+    .doc(req.params.id)
+    .get()
+
+  if (!quiz.exists) {
+    resp.status(404)
+      .send()
+      .send()
+    return
+  }
+
+  quiz.ref.delete()
+    .then(() => resp.status(200).send())
+    .catch(() => resp.status(500).send())
 })
 
 export { router as quizRouter }
