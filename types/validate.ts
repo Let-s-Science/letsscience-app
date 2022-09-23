@@ -1,6 +1,6 @@
 import { ValidateFunction, ErrorObject } from 'ajv'
 import * as validations from './schemas/validations'
-import { Quiz } from './types'
+import { Challenge, Quiz, UserChallenge } from './types'
 
 class TypeError extends Error {
   public ajvErrors: ErrorObject[]
@@ -30,4 +30,12 @@ export function ensureType<T> (
 
 export const isQuiz = (data: any): Quiz => {
   return ensureType<Quiz>(validations.Quiz, data)
+}
+
+export const isChallenge = (data: any): Challenge => {
+  return ensureType<Challenge>(validations.Challenge, data)
+}
+
+export const isUserChallenge = (data: any): UserChallenge => {
+  return ensureType<UserChallenge>(validations.UserChallenge, data)
 }
