@@ -1,5 +1,9 @@
 export type API<T> = T & { id: string }
 
+export type ChangeSet<T> = {
+  [P in keyof Omit<T, 'id'>]+?: T[P] extends Array<infer U> ? Array<ChangeSet<U>> : T[P] extends object ? ChangeSet<T[P]> : T[P]
+}
+
 export interface QuizAnswer {
   id: number
   answer: string
@@ -16,7 +20,7 @@ export interface Quiz {
   questions: QuizQuestion[]
 }
 
-export type UserID = string;
+export type UserID = string
 
 export interface Challenge {
   /**
